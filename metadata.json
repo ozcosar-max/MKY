@@ -1,0 +1,6 @@
+{
+  "name": "Portföy Ziyaret Planı",
+  "description": "Ticari banka portföy yöneticileri için müşteri ziyaretleri ve toplantı notları planlama uygulaması.",
+  "requestFramePermissions": ["microphone", "geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

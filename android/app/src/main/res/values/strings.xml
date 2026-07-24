@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MKY Ziyaret Planı</string>
+    <string name="title_activity_main">MKY Ziyaret Planı</string>
+    <string name="package_name">com.mky.ziyaretplani</string>
+    <string name="custom_url_scheme">com.mky.ziyaretplani</string>
+</resources>
