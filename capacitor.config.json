@@ -1,6 +1,6 @@
 {
-	"appId": "com.mky.ziyaretplani",
-	"appName": "MKY Ziyaret Planı",
-	"webDir": "dist",
-	"bundledWebRuntime": false
+  "appId": "com.mky.ziyaretplani",
+  "appName": "MKY Ziyaret Planı",
+  "webDir": "dist",
+  "bundledWebRuntime": false
 }

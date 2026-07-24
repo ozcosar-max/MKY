@@ -575,15 +575,15 @@ Raporlayan: Ticari Portföy Yöneticisi
 
         {/* Content Review Area */}
         <div className="p-6 overflow-y-auto space-y-4 flex-1">
-          <p className="text-[11px] font-medium text-slate-500 dark:text-zinc-400 leading-normal">
+          <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-zinc-400 leading-normal">
             Aşağıdaki görüşme özeti ve yapılandırılmış değerlendirme formu verileri anlık olarak derlendi. Raporu yazdırabilir, kurumsal e-posta veya anlık mesajlaşma kanallarıyla paylaşabilirsiniz.
           </p>
 
-          <div className="p-4 bg-slate-50 dark:bg-zinc-950 border border-slate-200/80 dark:border-zinc-850 rounded-xl font-mono text-[10.5px] text-slate-700 dark:text-zinc-300 whitespace-pre-wrap leading-relaxed max-h-[45vh] overflow-y-auto shadow-inner">
+          <div className="p-4 bg-slate-50 dark:bg-zinc-950 border border-slate-200/80 dark:border-zinc-850 rounded-xl font-mono text-xs text-slate-700 dark:text-zinc-300 whitespace-pre-wrap leading-relaxed max-h-[45vh] overflow-y-auto shadow-inner">
             {reportText}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-3 bg-teal-50/30 dark:bg-teal-950/10 border border-teal-100/40 dark:border-teal-900/15 rounded-xl text-[10px] text-slate-500 dark:text-zinc-400">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-3 bg-teal-50/30 dark:bg-teal-950/10 border border-teal-100/40 dark:border-teal-900/15 rounded-xl text-xs text-slate-500 dark:text-zinc-400">
             <div>
               <span>Raporlanan Müşteri: </span>
               <strong className="text-slate-800 dark:text-zinc-200">{visit.customerName}</strong>
@@ -611,31 +611,31 @@ Raporlayan: Ticari Portföy Yöneticisi
         <div className="bg-slate-50 dark:bg-zinc-950/80 px-6 py-4 border-t border-slate-150 dark:border-zinc-800/80 rounded-b-2xl flex flex-wrap gap-2 justify-end">
           <button
             onClick={handleDownloadPDF}
-            className="flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-bold rounded-xl bg-teal-600 hover:bg-teal-700 text-white shadow transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-teal-600 hover:bg-teal-700 text-white shadow transition-colors cursor-pointer"
           >
-            <Printer className="w-3.5 h-3.5" />
+            <Printer className="w-4 h-4" />
             Rapor Yazdır / PDF İndir
           </button>
 
           <button
             onClick={handleSendEmail}
-            className="flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-bold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow transition-colors cursor-pointer"
           >
-            <Mail className="w-3.5 h-3.5" />
+            <Mail className="w-4 h-4" />
             E-posta Gönder
           </button>
 
           <button
             onClick={handleShareWhatsApp}
-            className="flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-bold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow transition-colors cursor-pointer"
           >
-            <Share2 className="w-3.5 h-3.5" />
+            <Share2 className="w-4 h-4" />
             WhatsApp Paylaş
           </button>
 
           <button
             onClick={onClose}
-            className="px-3.5 py-2 text-[11px] font-bold rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-200 transition-colors cursor-pointer"
+            className="px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-200 transition-colors cursor-pointer"
           >
             Vazgeç
           </button>

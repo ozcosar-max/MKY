@@ -128,7 +128,7 @@ export function VoiceAssistant({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           <Sparkles className="w-4 h-4 text-teal-600 animate-pulse" />
-          <span className="text-xs font-bold uppercase tracking-wider font-display text-slate-700 dark:text-zinc-300">
+          <span className="text-sm font-bold uppercase tracking-wider font-display text-slate-700 dark:text-zinc-300">
             {mode === 'command' ? 'Türkçe Sesli Komut Asistanı' : 'Sesli Toplantı Notu Diktesi'}
           </span>
         </div>
@@ -160,21 +160,21 @@ export function VoiceAssistant({
         <div className="flex-1 min-w-0">
           {isListening ? (
             <div className="space-y-1">
-              <p className="text-xs font-bold text-red-500 dark:text-red-400 animate-pulse flex items-center gap-1.5">
-                <Volume2 className="w-3.5 h-3.5" />
+              <p className="text-sm font-bold text-red-500 dark:text-red-400 animate-pulse flex items-center gap-1.5">
+                <Volume2 className="w-4 h-4" />
                 Dinleniyor... (Türkçe)
               </p>
-              <p className="text-xs text-slate-700 dark:text-zinc-300 font-medium italic truncate">
+              <p className="text-sm text-slate-700 dark:text-zinc-300 font-medium italic truncate">
                 {interimResult || transcript || 'Konuşun...'}
               </p>
             </div>
           ) : (
             <div>
-              <p className="text-xs text-slate-500 dark:text-zinc-400 font-medium leading-relaxed">
+              <p className="text-sm text-slate-500 dark:text-zinc-400 font-medium leading-relaxed">
                 {placeholder}
               </p>
               {transcript && (
-                <p className="text-xs font-bold text-teal-600 dark:text-teal-400 mt-1 line-clamp-1">
+                <p className="text-sm font-bold text-teal-600 dark:text-teal-400 mt-1 line-clamp-1">
                   Algılanan: <span className="italic">"{transcript}"</span>
                 </p>
               )}
@@ -184,13 +184,13 @@ export function VoiceAssistant({
       </div>
 
       {errorMsg && (
-        <div className="text-[11px] font-semibold text-red-500 bg-red-50 dark:bg-red-950/20 p-3 rounded-xl border border-red-100 dark:border-red-900/30">
+        <div className="text-xs font-semibold text-red-500 bg-red-50 dark:bg-red-950/20 p-3 rounded-xl border border-red-100 dark:border-red-900/30">
           {errorMsg}
         </div>
       )}
 
       {mode === 'command' && (
-        <div className="text-[10px] text-slate-500 dark:text-zinc-500 space-y-1 pt-1">
+        <div className="text-xs text-slate-500 dark:text-zinc-500 space-y-1 pt-1">
           <div className="flex items-center gap-1">
             <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
             <span className="font-bold uppercase">Desteklenen Komut Örnekleri:</span>

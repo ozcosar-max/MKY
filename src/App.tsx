@@ -1076,10 +1076,10 @@ export default function App() {
                               {visit.time}
                             </span>
                             <div>
-                              <h4 className="text-xs font-bold text-slate-900 dark:text-zinc-100">
+                              <h4 className="text-sm font-bold text-slate-900 dark:text-zinc-100">
                                 {visit.customerName}
                               </h4>
-                              <p className="text-[11px] text-slate-500 dark:text-zinc-400 line-clamp-1 mt-0.5">
+                              <p className="text-xs text-slate-500 dark:text-zinc-400 line-clamp-1 mt-0.5">
                                 {visit.purpose}
                               </p>
                             </div>
@@ -1092,7 +1092,7 @@ export default function App() {
                                   setActiveReportData({ customer: virtualCustomer, visit });
                                   setShowReportModal(true);
                                 }}
-                                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/30 dark:hover:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-lg border border-emerald-100 dark:border-emerald-900/20 cursor-pointer"
+                                className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/30 dark:hover:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-lg border border-emerald-100 dark:border-emerald-900/20 cursor-pointer"
                               >
                                 <FileText className="w-3.5 h-3.5" />
                                 Rapor Paylaş
@@ -1104,7 +1104,7 @@ export default function App() {
                                     updateVisit({ ...visit, status: 'Completed' });
                                     showToast("Ziyaret 'Tamamlandı' olarak güncellendi.");
                                   }}
-                                  className="px-2.5 py-1 text-[10px] font-bold bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-colors cursor-pointer"
+                                  className="px-2.5 py-1 text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-colors cursor-pointer"
                                 >
                                   Tamamla
                                 </button>
@@ -1388,7 +1388,7 @@ export default function App() {
 
                         <div className="flex-1 space-y-2.5">
                           {dateVisits.length === 0 ? (
-                            <span className="text-[10px] text-slate-400 italic block text-center py-6">Ziyaret Yok</span>
+                            <span className="text-xs text-slate-400 italic block text-center py-6">Ziyaret Yok</span>
                           ) : (
                             dateVisits.map(v => (
                               <div
@@ -1399,9 +1399,9 @@ export default function App() {
                                 }}
                                 className="p-2 bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 hover:border-teal-500 transition-all cursor-pointer shadow-xs"
                               >
-                                <div className="text-[10px] font-mono font-bold text-teal-600 dark:text-teal-400 mb-1">{v.time}</div>
-                                <div className="text-xs font-bold text-slate-900 dark:text-zinc-100 truncate">{v.customerName}</div>
-                                <div className="text-[11px] text-slate-500 truncate mt-0.5">{v.purpose}</div>
+                                <div className="text-xs font-mono font-bold text-teal-600 dark:text-teal-400 mb-1">{v.time}</div>
+                                <div className="text-sm font-bold text-slate-900 dark:text-zinc-100 truncate">{v.customerName}</div>
+                                <div className="text-xs text-slate-500 truncate mt-0.5">{v.purpose}</div>
                               </div>
                             ))
                           )}
@@ -1708,7 +1708,7 @@ export default function App() {
       <footer className={`${isAndroidSimulator ? 'flex absolute h-16 pb-1' : 'md:hidden fixed h-safe-bottom pb-safe-navbar'} bottom-0 left-0 right-0 bg-white dark:bg-zinc-900 border-t border-slate-150 dark:border-zinc-800 flex items-center justify-around z-50 px-2 select-none`}>
         <button
           onClick={() => setActiveTab('dashboard')}
-          className={`flex flex-col items-center justify-center gap-1 text-[10px] font-bold cursor-pointer transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 text-xs font-bold cursor-pointer transition-colors ${
             activeTab === 'dashboard' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'
           }`}
         >
@@ -1718,7 +1718,7 @@ export default function App() {
 
         <button
           onClick={() => setActiveTab('calendar')}
-          className={`flex flex-col items-center justify-center gap-1 text-[10px] font-bold cursor-pointer transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 text-xs font-bold cursor-pointer transition-colors ${
             activeTab === 'calendar' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'
           }`}
         >
@@ -1728,7 +1728,7 @@ export default function App() {
 
         <button
           onClick={() => setActiveTab('customers')}
-          className={`flex flex-col items-center justify-center gap-1 text-[10px] font-bold cursor-pointer transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 text-xs font-bold cursor-pointer transition-colors ${
             activeTab === 'customers' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'
           }`}
         >
@@ -1738,7 +1738,7 @@ export default function App() {
 
         <button
           onClick={() => setActiveTab('map')}
-          className={`flex flex-col items-center justify-center gap-1 text-[10px] font-bold cursor-pointer transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 text-xs font-bold cursor-pointer transition-colors ${
             activeTab === 'map' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'
           }`}
         >
@@ -1748,7 +1748,7 @@ export default function App() {
 
         <button
           onClick={() => setActiveTab('settings')}
-          className={`flex flex-col items-center justify-center gap-1 text-[10px] font-bold cursor-pointer transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 text-xs font-bold cursor-pointer transition-colors ${
             activeTab === 'settings' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400'
           }`}
         >
@@ -2147,7 +2147,7 @@ export default function App() {
                         });
                         setShowReportModal(true);
                       }}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-teal-50 hover:bg-teal-100/85 text-teal-700 dark:bg-teal-950/40 dark:hover:bg-teal-950/70 dark:text-teal-400 text-[10px] font-bold rounded-lg border border-teal-200/50 dark:border-teal-900/30 cursor-pointer shadow-xs transition-colors"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-teal-50 hover:bg-teal-100/85 text-teal-700 dark:bg-teal-950/40 dark:hover:bg-teal-950/70 dark:text-teal-400 text-xs font-bold rounded-lg border border-teal-200/50 dark:border-teal-900/30 cursor-pointer shadow-xs transition-colors"
                     >
                       <FileText className="w-3.5 h-3.5" />
                       Rapor Al (PDF/Yazdır)
@@ -2160,8 +2160,8 @@ export default function App() {
               {meetingFormState && (
                 <div className="border border-slate-200 dark:border-zinc-850/80 rounded-2xl p-4 bg-slate-50/50 dark:bg-zinc-950/25 space-y-3">
                   <div className="flex flex-col gap-1">
-                    <span className="text-[10px] font-bold tracking-widest text-teal-650 dark:text-teal-400 uppercase font-display">MÜŞTERİ GÖRÜŞME FORMU</span>
-                    <p className="text-[11px] text-slate-500 leading-normal">
+                    <span className="text-xs font-bold tracking-widest text-teal-650 dark:text-teal-400 uppercase font-display">MÜŞTERİ GÖRÜŞME FORMU</span>
+                    <p className="text-xs text-slate-500 leading-normal">
                       Ziyaret sırasında elde edilen mavi tabela, mülkiyet, tahsilat, ithalat/ihracat ve finansal kredi taleplerini hızlıca işaretleyin.
                     </p>
                   </div>

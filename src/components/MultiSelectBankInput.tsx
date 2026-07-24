@@ -114,14 +114,14 @@ export function MultiSelectBankInput({
   };
 
   return (
-    <div className="space-y-1 text-xs relative">
+    <div className="space-y-1 text-sm relative">
       <label className="font-semibold text-slate-600 dark:text-zinc-400 block">{label}</label>
       
       {/* Selector Trigger Button */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-3.5 py-2.5 border border-slate-200 dark:border-zinc-850 bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-900 transition-colors text-left font-medium"
+        className="w-full flex items-center justify-between px-3.5 py-2.5 border border-slate-200 dark:border-zinc-850 bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-900 transition-colors text-left font-medium text-xs sm:text-sm"
       >
         <span className="truncate">{getButtonLabel()}</span>
         {isOpen ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
@@ -132,7 +132,7 @@ export function MultiSelectBankInput({
         <div className="absolute left-0 right-0 mt-1 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl shadow-xl z-50 p-4 space-y-3 max-h-80 overflow-y-auto animate-in fade-in slide-in-from-top-1">
           {BANK_CATEGORIES.map((cat) => (
             <div key={cat.category} className="space-y-1.5">
-              <span className="text-[10px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider block border-b border-slate-100 dark:border-zinc-800/60 pb-1">
+              <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider block border-b border-slate-100 dark:border-zinc-800/60 pb-1">
                 {cat.category}
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
@@ -154,7 +154,7 @@ export function MultiSelectBankInput({
                       }`}>
                         {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                       </div>
-                      <span className="text-[11px] leading-none">{bank}</span>
+                      <span className="text-xs leading-none">{bank}</span>
                     </button>
                   );
                 })}
@@ -164,7 +164,7 @@ export function MultiSelectBankInput({
 
           {/* Diğer (Other) section */}
           <div className="space-y-1.5 pt-1">
-            <span className="text-[10px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider block border-b border-slate-100 dark:border-zinc-800/60 pb-1">
+            <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider block border-b border-slate-100 dark:border-zinc-800/60 pb-1">
               Ek Seçenekler
             </span>
             <button
@@ -181,7 +181,7 @@ export function MultiSelectBankInput({
               }`}>
                 {isOtherSelected && <Check className="w-3 h-3 stroke-[3]" />}
               </div>
-              <span className="text-[11px] leading-none">Diğer</span>
+              <span className="text-xs leading-none">Diğer</span>
             </button>
           </div>
 
@@ -189,7 +189,7 @@ export function MultiSelectBankInput({
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-lg text-[10px] font-bold transition-colors cursor-pointer"
+              className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-lg text-xs font-bold transition-colors cursor-pointer"
             >
               Tamam
             </button>
@@ -211,7 +211,7 @@ export function MultiSelectBankInput({
             onChange={(e) => handleOtherTextChange(e.target.value)}
             placeholder="Diğer banka adını yazınız..."
             required={isOtherSelected}
-            className="w-full px-3.5 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 text-xs font-medium focus:outline-none focus:border-teal-500"
+            className="w-full px-3.5 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 text-xs sm:text-sm font-medium focus:outline-none focus:border-teal-500"
           />
         </div>
       )}

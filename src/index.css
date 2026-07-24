@@ -7,6 +7,20 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+html {
+  font-size: 110%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+input, select, textarea, button {
+  font-size: inherit;
+}
+
 /* Safe Area Utility Classes for mobile devices */
 .pt-safe {
   padding-top: calc(env(safe-area-inset-top, 0px) + 0.5rem);

@@ -197,14 +197,14 @@ export function LeafletMap({
         <div className="absolute bottom-4 left-4 right-4 sm:left-4 sm:right-auto sm:max-w-sm z-[20] bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl rounded-2xl p-4 animate-in fade-in slide-in-from-bottom-3">
           <div className="flex justify-between items-start mb-2 pb-2 border-b border-slate-100 dark:border-zinc-800">
             <div>
-              <span className={`inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full ${
+              <span className={`inline-flex items-center gap-1 text-xs uppercase tracking-wider font-bold px-2 py-0.5 rounded-full ${
                 selectedVisit.status === 'Completed'
                   ? 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-teal-400'
                   : 'bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400'
               }`}>
                 {selectedVisit.status === 'Completed' ? 'Tamamlandı' : 'Planlandı'}
               </span>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-zinc-100 font-display mt-1">
+              <h3 className="text-base font-bold text-slate-900 dark:text-zinc-100 font-display mt-1">
                 {selectedVisit.customerName}
               </h3>
             </div>
@@ -216,7 +216,7 @@ export function LeafletMap({
             </button>
           </div>
 
-          <div className="space-y-2 text-[11px] text-slate-600 dark:text-zinc-300">
+          <div className="space-y-2 text-xs text-slate-600 dark:text-zinc-300">
             {selectedVisit.customerPhone && (
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-slate-400" />
@@ -240,7 +240,7 @@ export function LeafletMap({
               <span className="font-bold text-teal-600 dark:text-teal-400 font-mono">{selectedVisit.date} • {selectedVisit.time}</span>
             </div>
             <div className="p-2 bg-slate-50 dark:bg-zinc-950/40 rounded-lg border border-slate-100 dark:border-zinc-850">
-              <p className="font-bold text-[10px] uppercase text-slate-400 mb-0.5">Ziyaret Amacı</p>
+              <p className="font-bold text-xs uppercase text-slate-400 mb-0.5">Ziyaret Amacı</p>
               <p className="italic text-slate-700 dark:text-zinc-350">{selectedVisit.purpose}</p>
             </div>
           </div>
@@ -250,9 +250,9 @@ export function LeafletMap({
               href={`https://www.google.com/maps/dir/?api=1&destination=${selectedVisit.lat},${selectedVisit.lng}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-1.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-center font-bold text-[10px] shadow-xs cursor-pointer flex items-center justify-center gap-1 transition-colors"
+              className="py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-center font-bold text-xs shadow-xs cursor-pointer flex items-center justify-center gap-1 transition-colors"
             >
-              <Navigation className="w-3 h-3" />
+              <Navigation className="w-3.5 h-3.5" />
               Yol Tarifi Al
             </a>
             <button
@@ -262,9 +262,9 @@ export function LeafletMap({
                   setSelectedVisit(null);
                 }
               }}
-              className="py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-700/60 text-center font-bold text-[10px] cursor-pointer flex items-center justify-center gap-1 transition-colors"
+              className="py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-750 text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-700/60 text-center font-bold text-xs cursor-pointer flex items-center justify-center gap-1 transition-colors"
             >
-              <CalendarPlus className="w-3 h-3" />
+              <CalendarPlus className="w-3.5 h-3.5" />
               Ziyaret Planla
             </button>
           </div>

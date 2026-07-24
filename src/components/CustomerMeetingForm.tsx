@@ -111,7 +111,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
   const financingNeedsOptions = ['İşletme Kredisi', 'Yatırım Kredisi', 'Makine', 'Araç', 'Gayrimenkul', 'Döviz Kredisi', 'Diğer'];
 
   return (
-    <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 pb-4 text-xs">
+    <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 pb-4 text-sm">
       
       {/* ----------------- 1. GENERAL SECTION ----------------- */}
       <div className="bg-slate-50 dark:bg-zinc-950/45 rounded-2xl border border-slate-200/80 dark:border-zinc-850/80 overflow-hidden shadow-xs">
@@ -959,7 +959,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-camera-photos')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-[10px] bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 cursor-pointer"
+                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 cursor-pointer"
                   >
                     <Camera className="w-3.5 h-3.5" />
                     Kameradan Çek
@@ -975,7 +975,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-gallery-photos')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-[10px] bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-250/50 cursor-pointer"
+                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-250/50 cursor-pointer"
                   >
                     <Image className="w-3.5 h-3.5" />
                     Galeriden Seç
@@ -984,7 +984,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
               </div>
 
               {(!value.photos || value.photos.length === 0) ? (
-                <p className="text-[10px] text-slate-400 italic">Henüz bu görüşmeye ait fotoğraf eklenmedi.</p>
+                <p className="text-xs text-slate-400 italic">Henüz bu görüşmeye ait fotoğraf eklenmedi.</p>
               ) : (
                 <div className="grid grid-cols-3 gap-2">
                   {value.photos.map((url, i) => (
@@ -1019,7 +1019,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-camera-cards')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-[10px] bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 cursor-pointer"
+                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 cursor-pointer"
                   >
                     <Camera className="w-3.5 h-3.5" />
                     Kameradan Çek
@@ -1035,7 +1035,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-gallery-cards')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-[10px] bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-250/50 cursor-pointer"
+                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-250/50 cursor-pointer"
                   >
                     <Image className="w-3.5 h-3.5" />
                     Galeriden Seç
@@ -1044,7 +1044,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
               </div>
 
               {(!value.businessCards || value.businessCards.length === 0) ? (
-                <p className="text-[10px] text-slate-400 italic">Henüz bu görüşmeye ait kartvizit eklenmedi.</p>
+                <p className="text-xs text-slate-400 italic">Henüz bu görüşmeye ait kartvizit eklenmedi.</p>
               ) : (
                 <div className="grid grid-cols-3 gap-2">
                   {value.businessCards.map((url, i) => (
