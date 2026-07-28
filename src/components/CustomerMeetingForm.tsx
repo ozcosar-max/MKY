@@ -111,32 +111,32 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
   const financingNeedsOptions = ['İşletme Kredisi', 'Yatırım Kredisi', 'Makine', 'Araç', 'Gayrimenkul', 'Döviz Kredisi', 'Diğer'];
 
   return (
-    <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 pb-4 text-sm">
+    <div className="space-y-2.5 text-xs">
       
       {/* ----------------- 1. GENERAL SECTION ----------------- */}
-      <div className="bg-slate-50 dark:bg-zinc-950/45 rounded-2xl border border-slate-200/80 dark:border-zinc-850/80 overflow-hidden shadow-xs">
+      <div className="bg-slate-50 dark:bg-zinc-950/45 rounded-xl border border-slate-200/80 dark:border-zinc-850/80 overflow-hidden shadow-2xs">
         <button
           type="button"
           onClick={() => toggleSection('general')}
-          className="w-full px-4 py-3.5 flex items-center justify-between font-display font-bold text-slate-800 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-900/60 transition-colors text-left"
+          className="w-full px-3 py-2.5 flex items-center justify-between font-display font-bold text-slate-800 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-900/60 transition-colors text-left text-xs"
         >
           <div className="flex items-center gap-2">
-            <Calendar className="w-4.5 h-4.5 text-teal-600" />
+            <Calendar className="w-4 h-4 text-teal-600" />
             <span>GENEL GÖRÜŞME BİLGİLERİ</span>
           </div>
           {expanded.general ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
         </button>
 
         {expanded.general && (
-          <div className="p-4 border-t border-slate-200/60 dark:border-zinc-800/60 space-y-3.5 bg-white dark:bg-zinc-900/40">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div className="p-3 border-t border-slate-200/60 dark:border-zinc-800/60 space-y-2.5 bg-white dark:bg-zinc-900/40">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div className="space-y-1">
                 <label className="font-semibold text-slate-600 dark:text-zinc-400">Görüşme Tarihi</label>
                 <input
                   type="date"
                   value={value.meetingDate}
                   onChange={(e) => updateField('meetingDate', e.target.value)}
-                  className="w-full px-3 py-2.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 text-xs font-medium"
+                  className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-lg bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 text-xs font-medium"
                 />
               </div>
 
@@ -147,18 +147,18 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   value={value.contactPerson}
                   onChange={(e) => updateField('contactPerson', e.target.value)}
                   placeholder="Görüşülen yetkilinin adı"
-                  className="w-full px-3 py-2.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 text-xs font-medium"
+                  className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-lg bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 text-xs font-medium"
                 />
               </div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <label className="font-semibold text-slate-600 dark:text-zinc-400 block">Görüşme Sonucu</label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5">
                 {resultsOptions.map((option) => (
                   <label
                     key={option}
-                    className={`flex items-center gap-2.5 p-3 rounded-xl border cursor-pointer select-none transition-all ${
+                    className={`flex items-center gap-2 p-2 rounded-lg border cursor-pointer select-none transition-all ${
                       value.meetingResult === option
                         ? 'bg-teal-500/10 border-teal-500/85 text-teal-700 dark:text-teal-400 font-bold'
                         : 'bg-slate-50/50 dark:bg-zinc-950/50 border-slate-200/80 dark:border-zinc-800 hover:bg-slate-100/80 dark:hover:bg-zinc-900/80 text-slate-700 dark:text-zinc-300'
@@ -168,7 +168,7 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                       type="radio"
                       checked={value.meetingResult === option}
                       onChange={() => updateField('meetingResult', option)}
-                      className="w-4 h-4 text-teal-600 border-slate-300 focus:ring-teal-500"
+                      className="w-3.5 h-3.5 text-teal-600 border-slate-300 focus:ring-teal-500"
                     />
                     <span>{option}</span>
                   </label>
@@ -928,26 +928,26 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
       </div>
 
       {/* ----------------- 13. PHOTOS SECTION ----------------- */}
-      <div className="bg-slate-50 dark:bg-zinc-950/45 rounded-2xl border border-slate-200/80 dark:border-zinc-850/80 overflow-hidden shadow-xs">
+      <div className="bg-slate-50 dark:bg-zinc-950/45 rounded-xl border border-slate-200/80 dark:border-zinc-850/80 overflow-hidden shadow-2xs">
         <button
           type="button"
           onClick={() => toggleSection('photos')}
-          className="w-full px-4 py-3.5 flex items-center justify-between font-display font-bold text-slate-800 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-900/60 transition-colors text-left"
+          className="w-full px-3 py-2.5 flex items-center justify-between font-display font-bold text-slate-800 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-zinc-900/60 transition-colors text-left text-xs"
         >
           <div className="flex items-center gap-2">
-            <Camera className="w-4.5 h-4.5 text-teal-600" />
+            <Camera className="w-4 h-4 text-teal-600" />
             <span>FOTOĞRAFLAR VE KARTVİZİTLER</span>
           </div>
           {expanded.photos ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
         </button>
 
         {expanded.photos && (
-          <div className="p-4 border-t border-slate-200/60 dark:border-zinc-800/60 bg-white dark:bg-zinc-900/40 space-y-5 text-xs">
+          <div className="p-3 border-t border-slate-200/60 dark:border-zinc-800/60 bg-white dark:bg-zinc-900/40 space-y-3.5 text-xs">
             {/* Fotoğraflar Alt Bölümü */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-slate-700 dark:text-zinc-300">Görüşme Fotoğrafları</span>
-                <div className="flex gap-1.5">
+            <div className="space-y-2">
+              <div className="flex justify-between items-center gap-2">
+                <span className="font-bold text-slate-700 dark:text-zinc-300 text-xs">Görüşme Fotoğrafları</span>
+                <div className="flex items-center gap-1.5">
                   <input
                     type="file"
                     accept="image/*"
@@ -959,10 +959,10 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-camera-photos')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 cursor-pointer"
+                    className="flex items-center gap-1 px-2 py-1 text-[11px] bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 font-semibold cursor-pointer transition-colors"
                   >
                     <Camera className="w-3.5 h-3.5" />
-                    Kameradan Çek
+                    Kamera
                   </button>
 
                   <input
@@ -975,25 +975,25 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-gallery-photos')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-250/50 cursor-pointer"
+                    className="flex items-center gap-1 px-2 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-200/50 font-semibold cursor-pointer transition-colors"
                   >
                     <Image className="w-3.5 h-3.5" />
-                    Galeriden Seç
+                    Galeri
                   </button>
                 </div>
               </div>
 
               {(!value.photos || value.photos.length === 0) ? (
-                <p className="text-xs text-slate-400 italic">Henüz bu görüşmeye ait fotoğraf eklenmedi.</p>
+                <p className="text-[11px] text-slate-400 italic">Henüz fotoğraf eklenmedi.</p>
               ) : (
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
                   {value.photos.map((url, i) => (
                     <div key={i} className="relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 aspect-square group bg-slate-50">
                       <img src={url} alt={`Photo ${i}`} className="w-full h-full object-cover animate-fade-in" />
                       <button
                         type="button"
                         onClick={() => handleImageDelete('photos', i)}
-                        className="absolute top-1 right-1 p-1 bg-red-600 hover:bg-red-700 text-white rounded-full opacity-90 group-hover:opacity-100 transition-opacity cursor-pointer shadow"
+                        className="absolute top-1 right-1 p-0.5 bg-red-600 hover:bg-red-700 text-white rounded-full opacity-90 group-hover:opacity-100 transition-opacity cursor-pointer shadow-xs"
                       >
                         <Trash2 className="w-2.5 h-2.5" />
                       </button>
@@ -1004,10 +1004,10 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
             </div>
 
             {/* Kartvizitler Alt Bölümü */}
-            <div className="space-y-3 border-t border-slate-100 dark:border-zinc-800/60 pt-4">
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-slate-700 dark:text-zinc-300">Müşteri Kartvizitleri</span>
-                <div className="flex gap-1.5">
+            <div className="space-y-2 border-t border-slate-100 dark:border-zinc-800/60 pt-2.5">
+              <div className="flex justify-between items-center gap-2">
+                <span className="font-bold text-slate-700 dark:text-zinc-300 text-xs">Müşteri Kartvizitleri</span>
+                <div className="flex items-center gap-1.5">
                   <input
                     type="file"
                     accept="image/*"
@@ -1019,10 +1019,10 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-camera-cards')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 cursor-pointer"
+                    className="flex items-center gap-1 px-2 py-1 text-[11px] bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-900/30 text-teal-600 dark:text-teal-400 rounded-lg border border-teal-100/40 font-semibold cursor-pointer transition-colors"
                   >
                     <Camera className="w-3.5 h-3.5" />
-                    Kameradan Çek
+                    Kamera
                   </button>
 
                   <input
@@ -1035,25 +1035,25 @@ export function CustomerMeetingFormComp({ value, onChange }: CustomerMeetingForm
                   <button
                     type="button"
                     onClick={() => document.getElementById('meeting-gallery-cards')?.click()}
-                    className="flex items-center gap-1 px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-250/50 cursor-pointer"
+                    className="flex items-center gap-1 px-2 py-1 text-[11px] bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 rounded-lg border border-slate-200/50 font-semibold cursor-pointer transition-colors"
                   >
                     <Image className="w-3.5 h-3.5" />
-                    Galeriden Seç
+                    Galeri
                   </button>
                 </div>
               </div>
 
               {(!value.businessCards || value.businessCards.length === 0) ? (
-                <p className="text-xs text-slate-400 italic">Henüz bu görüşmeye ait kartvizit eklenmedi.</p>
+                <p className="text-[11px] text-slate-400 italic">Henüz kartvizit eklenmedi.</p>
               ) : (
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
                   {value.businessCards.map((url, i) => (
                     <div key={i} className="relative rounded-lg overflow-hidden border border-slate-200 dark:border-zinc-800 aspect-square group bg-slate-50">
                       <img src={url} alt={`Card ${i}`} className="w-full h-full object-cover animate-fade-in" />
                       <button
                         type="button"
                         onClick={() => handleImageDelete('businessCards', i)}
-                        className="absolute top-1 right-1 p-1 bg-red-600 hover:bg-red-700 text-white rounded-full opacity-90 group-hover:opacity-100 transition-opacity cursor-pointer shadow"
+                        className="absolute top-1 right-1 p-0.5 bg-red-600 hover:bg-red-700 text-white rounded-full opacity-90 group-hover:opacity-100 transition-opacity cursor-pointer shadow-xs"
                       >
                         <Trash2 className="w-2.5 h-2.5" />
                       </button>

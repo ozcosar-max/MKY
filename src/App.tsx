@@ -1802,10 +1802,10 @@ export default function App() {
 
       {/* -------------------- MODAL: CREATE / EDIT VISIT -------------------- */}
       {showVisitModal && (
-        <div className={`${isAndroidSimulator ? 'absolute' : 'fixed'} inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 z-[9999]`}>
-          <form onSubmit={handleVisitSubmit} className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl w-full max-w-lg shadow-2xl p-6 space-y-4 animate-in fade-in">
+        <div className={`${isAndroidSimulator ? 'absolute' : 'fixed'} inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 z-[9999]`}>
+          <form onSubmit={handleVisitSubmit} className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl w-full max-w-lg shadow-2xl p-3.5 sm:p-4 space-y-3 animate-in fade-in">
             <div className="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-zinc-800">
-              <h3 className="text-base font-bold text-slate-900 dark:text-zinc-50 font-display">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-zinc-50 font-display">
                 {editingVisit ? 'Görüşme Detaylarını Düzenle' : 'Yeni Görüşme Planla'}
               </h3>
               <button
@@ -1814,14 +1814,14 @@ export default function App() {
                   setShowVisitModal(false);
                   setEditingVisit(null);
                 }}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 p-1"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
 
-            <div className="space-y-4 text-xs max-h-[65vh] overflow-y-auto px-1 pr-2">
-              <div className="space-y-3 p-3.5 bg-slate-50 dark:bg-zinc-950/60 border border-slate-150 dark:border-zinc-800/80 rounded-xl">
+            <div className="space-y-3 text-xs max-h-[72vh] overflow-y-auto px-0.5 pr-1">
+              <div className="space-y-2 p-3 bg-slate-50 dark:bg-zinc-950/60 border border-slate-200/80 dark:border-zinc-800/80 rounded-xl">
                 <div className="flex justify-between items-center pb-1 border-b border-slate-200/50 dark:border-zinc-800/50">
                   <h4 className="font-bold text-[10px] text-teal-600 dark:text-teal-400 uppercase tracking-wide">
                     Görüşülecek Müşteri Seçimi
@@ -1854,7 +1854,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="space-y-2.5 pt-1">
+                <div className="space-y-2 pt-0.5">
                   {customerEntryMode === 'existing' ? (
                     /* Existing Customer Dropdown */
                     <div className="space-y-1">
@@ -1872,7 +1872,7 @@ export default function App() {
                             }));
                           }
                         }}
-                        className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 font-semibold text-xs cursor-pointer"
+                        className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 font-semibold text-xs cursor-pointer"
                       >
                         <option value="" disabled>Seçiniz...</option>
                         {customers.map((c) => (
@@ -1884,7 +1884,7 @@ export default function App() {
                       
                       {/* Customer info preview inside visit modal */}
                       {selectedCustomerId && (
-                        <div className="mt-2 p-2.5 bg-white/50 dark:bg-zinc-900/50 border border-slate-200/40 dark:border-zinc-800/40 rounded-lg space-y-1 text-[10px]">
+                        <div className="mt-1.5 p-2 bg-white/60 dark:bg-zinc-900/60 border border-slate-200/50 dark:border-zinc-800/50 rounded-lg space-y-0.5 text-[10px]">
                           <div className="flex justify-between">
                             <span className="font-semibold text-slate-500">Telefon:</span>
                             <span className="text-slate-800 dark:text-zinc-300 font-mono font-medium">{visitForm_customerPhone}</span>
@@ -1904,7 +1904,7 @@ export default function App() {
                     </div>
                   ) : (
                     /* Manual Entry Fields */
-                    <div className="space-y-2.5 animate-in fade-in duration-200">
+                    <div className="space-y-2 animate-in fade-in duration-200">
                       <div className="space-y-1">
                         <label className="font-semibold text-slate-600 dark:text-zinc-400">Firma Ünvanı / Müşteri Adı *</label>
                         <input
@@ -1922,11 +1922,11 @@ export default function App() {
                             }
                           }}
                           placeholder="Örn: ABC Teknoloji Ltd. Şti."
-                          className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 font-medium"
+                          className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 font-medium"
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <div className="space-y-1">
                           <label className="font-semibold text-slate-600 dark:text-zinc-400">Telefon *</label>
                           <input
@@ -1935,7 +1935,7 @@ export default function App() {
                             value={manualCustomerPhone}
                             onChange={(e) => setManualCustomerPhone(e.target.value)}
                             placeholder="Örn: 0555 123 4567"
-                            className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 font-mono"
+                            className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 font-mono"
                           />
                         </div>
                         <div className="space-y-1">
@@ -1945,7 +1945,7 @@ export default function App() {
                             value={manualCustomerEmail}
                             onChange={(e) => setManualCustomerEmail(e.target.value)}
                             placeholder="Örn: eposta@firma.com"
-                            className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
+                            className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
                           />
                         </div>
                       </div>
@@ -1957,8 +1957,8 @@ export default function App() {
                           rows={2}
                           value={manualCustomerAddress}
                           onChange={(e) => setManualCustomerAddress(e.target.value)}
-                          placeholder="Örn: Atatürk Mah. Alparslan Cad. No:12 D:4 Ümraniye/İstanbul"
-                          className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 leading-relaxed"
+                          placeholder="Örn: Atatürk Mah. Alparslan Cad. No:12 Ümraniye/İstanbul"
+                          className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 leading-relaxed"
                         />
                       </div>
                     </div>
@@ -1966,7 +1966,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
                   <label className="font-semibold text-slate-600 dark:text-zinc-400">Görüşme Tarihi *</label>
                   <input
@@ -1985,7 +1985,7 @@ export default function App() {
                         }));
                       }
                     }}
-                    className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
+                    className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
                   />
                 </div>
 
@@ -1997,7 +1997,7 @@ export default function App() {
                     required
                     value={visitForm_time}
                     onChange={(e) => setVisitForm_time(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
+                    className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
                   />
                 </div>
               </div>
@@ -2011,13 +2011,13 @@ export default function App() {
                   value={visitForm_purpose}
                   onChange={(e) => setVisitForm_purpose(e.target.value)}
                   placeholder="Kredi yapılandırması, POS anlaşması, yeni hesap teklifi..."
-                  className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
+                  className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {/* Section Title & Mode Selectors */}
-                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 dark:border-zinc-800/60 pb-2">
+                <div className="flex justify-between items-center gap-2 border-b border-slate-100 dark:border-zinc-800/60 pb-1.5">
                   <label className="text-xs font-bold font-display uppercase tracking-wider text-slate-700 dark:text-zinc-300">
                     Toplantı Notları
                   </label>
@@ -2025,7 +2025,7 @@ export default function App() {
                     <button
                       type="button"
                       onClick={() => setNotesInputMode('voice')}
-                      className={`px-3 py-1 text-[11px] font-semibold rounded-md transition-all cursor-pointer ${
+                      className={`px-2.5 py-0.5 text-[10px] font-semibold rounded-md transition-all cursor-pointer ${
                         notesInputMode === 'voice'
                           ? 'bg-white dark:bg-zinc-800 text-teal-750 dark:text-teal-400 shadow-xs font-bold'
                           : 'text-slate-500'
@@ -2036,7 +2036,7 @@ export default function App() {
                     <button
                       type="button"
                       onClick={() => setNotesInputMode('text')}
-                      className={`px-3 py-1 text-[11px] font-semibold rounded-md transition-all cursor-pointer ${
+                      className={`px-2.5 py-0.5 text-[10px] font-semibold rounded-md transition-all cursor-pointer ${
                         notesInputMode === 'text'
                           ? 'bg-white dark:bg-zinc-800 text-teal-750 dark:text-teal-400 shadow-xs font-bold'
                           : 'text-slate-500'
@@ -2049,11 +2049,11 @@ export default function App() {
 
                 {/* Mode Contents */}
                 {notesInputMode === 'voice' ? (
-                  <div className="flex flex-col items-center justify-center py-6 bg-slate-50 dark:bg-zinc-950/45 rounded-xl border border-dashed border-slate-200 dark:border-zinc-800/80 gap-3">
+                  <div className="flex flex-col items-center justify-center py-3 bg-slate-50 dark:bg-zinc-950/45 rounded-xl border border-dashed border-slate-200 dark:border-zinc-800/80 gap-2">
                     <button
                       type="button"
                       onClick={handleToggleNotesListening}
-                      className={`w-14 h-14 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                      className={`w-11 h-11 rounded-full flex items-center justify-center transition-all cursor-pointer ${
                         isListeningNotes
                           ? 'bg-red-500 text-white animate-pulse shadow-lg shadow-red-500/30'
                           : 'bg-teal-600 hover:bg-teal-700 text-white shadow'
@@ -2061,26 +2061,26 @@ export default function App() {
                       title="Dikteyi Başlat/Durdur"
                     >
                       {isListeningNotes ? (
-                        <MicOff className="w-6 h-6" />
+                        <MicOff className="w-5 h-5" />
                       ) : (
-                        <Mic className="w-6 h-6" />
+                        <Mic className="w-5 h-5" />
                       )}
                     </button>
-                    <p className="text-xs font-medium text-slate-500 dark:text-zinc-400">
+                    <p className="text-[11px] font-medium text-slate-500 dark:text-zinc-400">
                       Not almak için mikrofona basın.
                     </p>
                     
                     {/* Live listening helper */}
                     {isListeningNotes && (
-                      <p className="text-[11px] font-bold text-red-500 dark:text-red-400 animate-pulse">
-                        Türkçe konuşun, sesiniz otomatik olarak eklenecektir...
+                      <p className="text-[10px] font-bold text-red-500 dark:text-red-400 animate-pulse">
+                        Türkçe konuşun, sesiniz otomatik eklenecektir...
                       </p>
                     )}
                     
                     {/* Notes preview container inside voice mode */}
                     {visitNotes && (
-                      <div className="w-full px-4 mt-1.5">
-                        <div className="p-3 bg-white dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800/80 rounded-xl text-xs text-slate-600 dark:text-zinc-300 italic whitespace-pre-wrap leading-relaxed max-h-24 overflow-y-auto shadow-xs">
+                      <div className="w-full px-2 mt-1">
+                        <div className="p-2.5 bg-white dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800/80 rounded-xl text-xs text-slate-600 dark:text-zinc-300 italic whitespace-pre-wrap leading-relaxed max-h-20 overflow-y-auto shadow-xs">
                           "{visitNotes}"
                         </div>
                       </div>
@@ -2092,9 +2092,9 @@ export default function App() {
                       name="notes"
                       value={visitNotes}
                       onChange={(e) => setVisitNotes(e.target.value)}
-                      rows={4}
+                      rows={3}
                       placeholder="Görüşülen konuları ve alınan notları buraya ekleyin..."
-                      className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
+                      className="w-full px-2.5 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
                     />
                   </div>
                 )}
@@ -2111,7 +2111,7 @@ export default function App() {
 
                 {/* "Rapor Al" Button under notes */}
                 {editingVisit && (
-                  <div className="pt-2 flex justify-start">
+                  <div className="pt-1 flex justify-start">
                     <button
                       type="button"
                       onClick={() => {
@@ -2158,11 +2158,11 @@ export default function App() {
 
               {/* STRUCTURED CUSTOMER MEETING FORM (MÜŞTERİ GÖRÜŞME FORMU) ACCORDION */}
               {meetingFormState && (
-                <div className="border border-slate-200 dark:border-zinc-850/80 rounded-2xl p-4 bg-slate-50/50 dark:bg-zinc-950/25 space-y-3">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs font-bold tracking-widest text-teal-650 dark:text-teal-400 uppercase font-display">MÜŞTERİ GÖRÜŞME FORMU</span>
-                    <p className="text-xs text-slate-500 leading-normal">
-                      Ziyaret sırasında elde edilen mavi tabela, mülkiyet, tahsilat, ithalat/ihracat ve finansal kredi taleplerini hızlıca işaretleyin.
+                <div className="space-y-2 pt-1">
+                  <div className="flex flex-col gap-0.5 pb-1">
+                    <span className="text-xs font-bold tracking-wider text-teal-600 dark:text-teal-400 uppercase font-display">MÜŞTERİ GÖRÜŞME FORMU</span>
+                    <p className="text-[11px] text-slate-500 leading-normal">
+                      Ziyaret sırasında elde edilen mavi tabela, mülkiyet, tahsilat ve finansal talepleri işaretleyin.
                     </p>
                   </div>
                   <CustomerMeetingFormComp
@@ -2172,13 +2172,13 @@ export default function App() {
                 </div>
               )}
 
-              <div className="space-y-1 pb-1">
-                <label className="font-semibold text-slate-600 dark:text-zinc-400">Ziyaret Durumu</label>
+              <div className="flex items-center justify-between gap-3 pt-1 border-t border-slate-100 dark:border-zinc-800/80">
+                <label className="font-bold text-slate-700 dark:text-zinc-300 text-xs shrink-0">Ziyaret Durumu</label>
                 <select
                   name="status"
                   value={visitForm_status}
                   onChange={(e) => setVisitForm_status(e.target.value as any)}
-                  className="w-full px-3 py-2 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-teal-500"
+                  className="w-auto px-3 py-1.5 border border-slate-200 dark:border-zinc-800 rounded-xl bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 text-xs font-semibold focus:outline-none focus:border-teal-500 cursor-pointer"
                 >
                   <option value="Planned">Planlandı</option>
                   <option value="Completed">Tamamlandı</option>
@@ -2187,7 +2187,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex justify-between pt-2 text-xs font-semibold">
+            <div className="flex items-center justify-between pt-2.5 text-xs font-semibold border-t border-slate-100 dark:border-zinc-800 gap-2">
               <div>
                 {editingVisit && (
                   <button
@@ -2205,14 +2205,14 @@ export default function App() {
                         }
                       });
                     }}
-                    className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/30 dark:hover:bg-red-900/30 rounded-xl border border-red-100 cursor-pointer"
+                    className="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-950/30 dark:hover:bg-red-900/30 rounded-xl border border-red-100/60 cursor-pointer font-bold transition-colors"
                   >
                     Ziyareti Sil
                   </button>
                 )}
               </div>
 
-              <div className="flex gap-2.5">
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   disabled={isSaving}
@@ -2220,14 +2220,14 @@ export default function App() {
                     setShowVisitModal(false);
                     setEditingVisit(null);
                   }}
-                  className="px-4 py-2 text-slate-600 hover:bg-slate-100 dark:text-zinc-400 dark:hover:bg-zinc-800 rounded-xl cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-3.5 py-1.5 text-slate-600 hover:bg-slate-100 dark:text-zinc-400 dark:hover:bg-zinc-800 rounded-xl cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   İptal
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl shadow cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-1.5"
+                  className="px-4 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl shadow-xs font-bold cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 transition-colors"
                 >
                   {isSaving ? (
                     <>
