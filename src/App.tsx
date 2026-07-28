@@ -221,26 +221,42 @@ export default function App() {
           setVisitForm_status(editingVisit.status);
           if (editingVisit.meetingForm) {
             const mForm = editingVisit.meetingForm;
+            const photos = (editingVisit.companyImages && editingVisit.companyImages.length > 0)
+              ? editingVisit.companyImages
+              : (mForm.photos || []);
+            const cards = (editingVisit.businessCardImages && editingVisit.businessCardImages.length > 0)
+              ? editingVisit.businessCardImages
+              : (mForm.businessCards || []);
+            const notesVal = editingVisit.meetingNotes || editingVisit.notes || mForm.meetingNotes || mForm.generalNotes || '';
+            const opinionsVal = editingVisit.opinions || mForm.opinions || '';
+
             const updatedForm: CustomerMeetingForm = {
               ...mForm,
-              workingBanks: parseBankFieldToDizi(editingVisit.workingBanks ?? mForm.workingBanks),
-              cashFlowBanks: parseBankFieldToDizi(editingVisit.cashFlowBanks ?? mForm.cashFlowBanks ?? mForm.cashFlowBank),
-              creditLimitBanks: parseBankFieldToDizi(editingVisit.creditLimitBanks ?? mForm.creditLimitBanks ?? mForm.loanBanks),
-              collectionBanks: parseBankFieldToDizi(editingVisit.collectionBanks ?? mForm.collectionBanks ?? mForm.tahsilatBanks),
-              paymentBanks: parseBankFieldToDizi(editingVisit.paymentBanks ?? mForm.paymentBanks ?? mForm.odemeBanks),
+              workingBanks: parseBankFieldToDizi(editingVisit.workingBanks?.length ? editingVisit.workingBanks : mForm.workingBanks),
+              cashFlowBanks: parseBankFieldToDizi(editingVisit.cashFlowBanks?.length ? editingVisit.cashFlowBanks : (mForm.cashFlowBanks ?? mForm.cashFlowBank)),
+              creditLimitBanks: parseBankFieldToDizi(editingVisit.creditLimitBanks?.length ? editingVisit.creditLimitBanks : (mForm.creditLimitBanks ?? mForm.loanBanks)),
+              collectionBanks: parseBankFieldToDizi(editingVisit.collectionBanks?.length ? editingVisit.collectionBanks : (mForm.collectionBanks ?? mForm.tahsilatBanks)),
+              paymentBanks: parseBankFieldToDizi(editingVisit.paymentBanks?.length ? editingVisit.paymentBanks : (mForm.paymentBanks ?? mForm.odemeBanks)),
               workingBanksOther: editingVisit.workingBanksOther ?? mForm.workingBanksOther ?? '',
               cashFlowBanksOther: editingVisit.cashFlowBanksOther ?? mForm.cashFlowBanksOther ?? mForm.cashFlowBankOther ?? '',
               creditLimitBanksOther: editingVisit.creditLimitBanksOther ?? mForm.creditLimitBanksOther ?? mForm.loanBanksOther ?? '',
               collectionBanksOther: editingVisit.collectionBanksOther ?? mForm.collectionBanksOther ?? mForm.tahsilatBanksOther ?? '',
               paymentBanksOther: editingVisit.paymentBanksOther ?? mForm.paymentBanksOther ?? mForm.odemeBanksOther ?? '',
-              meetingNotes: editingVisit.meetingNotes ?? mForm.meetingNotes ?? mForm.generalNotes ?? '',
-              opinions: editingVisit.opinions ?? mForm.opinions ?? '',
-              photos: editingVisit.companyImages ?? mForm.photos ?? [],
-              businessCards: editingVisit.businessCardImages ?? mForm.businessCards ?? []
+              meetingNotes: notesVal,
+              generalNotes: notesVal,
+              opinions: opinionsVal,
+              photos: photos,
+              businessCards: cards
             };
             setMeetingFormState(updatedForm);
+            setVisitNotes(notesVal);
           } else {
             const initialForm = createEmptyMeetingForm(editingVisit.date, editingVisit.customerName);
+            const photos = editingVisit.companyImages || [];
+            const cards = editingVisit.businessCardImages || [];
+            const notesVal = editingVisit.meetingNotes || editingVisit.notes || '';
+            const opinionsVal = editingVisit.opinions || '';
+
             const updatedForm: CustomerMeetingForm = {
               ...initialForm,
               workingBanks: parseBankFieldToDizi(editingVisit.workingBanks),
@@ -253,12 +269,14 @@ export default function App() {
               creditLimitBanksOther: editingVisit.creditLimitBanksOther || '',
               collectionBanksOther: editingVisit.collectionBanksOther || '',
               paymentBanksOther: editingVisit.paymentBanksOther || '',
-              meetingNotes: editingVisit.meetingNotes || editingVisit.notes || '',
-              opinions: editingVisit.opinions || '',
-              photos: editingVisit.companyImages || [],
-              businessCards: editingVisit.businessCardImages || []
+              meetingNotes: notesVal,
+              generalNotes: notesVal,
+              opinions: opinionsVal,
+              photos: photos,
+              businessCards: cards
             };
             setMeetingFormState(updatedForm);
+            setVisitNotes(notesVal);
           }
         } else {
           setCustomerEntryMode('existing');
@@ -531,25 +549,38 @@ export default function App() {
       // Simulate network request to ensure loading states/spinners are visible and protect against race conditions
       await simulateNetworkRequest();
 
+      // Prepare image and note values
+      const photosVal = (meetingFormState?.photos && meetingFormState.photos.length > 0)
+        ? meetingFormState.photos
+        : (editingVisit?.companyImages || editingVisit?.meetingForm?.photos || []);
+
+      const businessCardsVal = (meetingFormState?.businessCards && meetingFormState.businessCards.length > 0)
+        ? meetingFormState.businessCards
+        : (editingVisit?.businessCardImages || editingVisit?.meetingForm?.businessCards || []);
+
+      const notesVal = notes || meetingFormState?.meetingNotes || meetingFormState?.generalNotes || '';
+      const opinionsVal = meetingFormState?.opinions || editingVisit?.opinions || '';
+
       // Capture meeting form details (which remains editable later)
       const finalizedMeetingForm: CustomerMeetingForm = {
         ...meetingFormState,
         meetingDate: date, // Keep in sync with visit date
         contactPerson: (meetingFormState && meetingFormState.contactPerson) || visitForm_customerName,
-        workingBanks: meetingFormState?.workingBanks || [],
-        cashFlowBanks: meetingFormState?.cashFlowBanks || [],
-        creditLimitBanks: meetingFormState?.creditLimitBanks || [],
-        collectionBanks: meetingFormState?.collectionBanks || [],
-        paymentBanks: meetingFormState?.paymentBanks || [],
+        workingBanks: parseBankFieldToDizi(meetingFormState?.workingBanks),
+        cashFlowBanks: parseBankFieldToDizi(meetingFormState?.cashFlowBanks),
+        creditLimitBanks: parseBankFieldToDizi(meetingFormState?.creditLimitBanks),
+        collectionBanks: parseBankFieldToDizi(meetingFormState?.collectionBanks),
+        paymentBanks: parseBankFieldToDizi(meetingFormState?.paymentBanks),
         workingBanksOther: meetingFormState?.workingBanksOther || '',
         cashFlowBanksOther: meetingFormState?.cashFlowBanksOther || '',
         creditLimitBanksOther: meetingFormState?.creditLimitBanksOther || '',
         collectionBanksOther: meetingFormState?.collectionBanksOther || '',
         paymentBanksOther: meetingFormState?.paymentBanksOther || '',
-        meetingNotes: meetingFormState?.meetingNotes || '',
-        opinions: meetingFormState?.opinions || '',
-        photos: meetingFormState?.photos || [],
-        businessCards: meetingFormState?.businessCards || []
+        meetingNotes: notesVal,
+        generalNotes: notesVal,
+        opinions: opinionsVal,
+        photos: photosVal,
+        businessCards: businessCardsVal
       } as CustomerMeetingForm;
 
       const visitData: Omit<Visit, 'id'> = {
@@ -562,7 +593,7 @@ export default function App() {
         date,
         time,
         purpose,
-        notes,
+        notes: notesVal,
         status,
         customerEntryMode,
         selectedCustomerId: customerEntryMode === 'existing' ? selectedCustomerId : undefined,
@@ -581,10 +612,10 @@ export default function App() {
         creditLimitBanksOther: finalizedMeetingForm.creditLimitBanksOther,
         collectionBanksOther: finalizedMeetingForm.collectionBanksOther,
         paymentBanksOther: finalizedMeetingForm.paymentBanksOther,
-        meetingNotes: finalizedMeetingForm.meetingNotes,
-        opinions: finalizedMeetingForm.opinions,
-        companyImages: finalizedMeetingForm.photos,
-        businessCardImages: finalizedMeetingForm.businessCards
+        meetingNotes: notesVal,
+        opinions: opinionsVal,
+        companyImages: photosVal,
+        businessCardImages: businessCardsVal
       };
 
       if (editingVisit) {
@@ -1069,15 +1100,20 @@ export default function App() {
                       return (
                         <div
                           key={visit.id}
-                          className="p-3.5 rounded-xl border border-slate-100 dark:border-zinc-800/40 bg-slate-50/50 dark:bg-zinc-950/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 transition-all hover:border-slate-200 dark:hover:border-zinc-700"
+                          onClick={() => {
+                            setEditingVisit(visit);
+                            setShowVisitModal(true);
+                          }}
+                          className="p-3.5 rounded-xl border border-slate-100 dark:border-zinc-800/40 bg-slate-50/50 dark:bg-zinc-950/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 transition-all hover:border-teal-500/80 dark:hover:border-teal-500/80 hover:bg-slate-100/50 dark:hover:bg-zinc-900/60 cursor-pointer group active:scale-[0.99] shadow-2xs hover:shadow-xs"
                         >
                           <div className="flex items-start gap-3">
                             <span className="text-xs font-mono font-bold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/30 px-2 py-1 rounded border border-teal-100 dark:border-teal-900/20">
                               {visit.time}
                             </span>
                             <div>
-                              <h4 className="text-sm font-bold text-slate-900 dark:text-zinc-100">
-                                {visit.customerName}
+                              <h4 className="text-sm font-bold text-slate-900 dark:text-zinc-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors flex items-center gap-1.5">
+                                <span>{visit.customerName}</span>
+                                <Edit2 className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-teal-600 dark:text-teal-400 transition-opacity" />
                               </h4>
                               <p className="text-xs text-slate-500 dark:text-zinc-400 line-clamp-1 mt-0.5">
                                 {visit.purpose}
@@ -1085,10 +1121,11 @@ export default function App() {
                             </div>
                           </div>
 
-                          <div className="flex items-center gap-2 self-end sm:self-center">
+                          <div className="flex items-center gap-2 self-end sm:self-center" onClick={(e) => e.stopPropagation()}>
                             {visit.status === 'Completed' ? (
                               <button
-                                onClick={() => {
+                                onClick={(e) => {
+                                  e.stopPropagation();
                                   setActiveReportData({ customer: virtualCustomer, visit });
                                   setShowReportModal(true);
                                 }}
@@ -1100,7 +1137,8 @@ export default function App() {
                             ) : (
                               <div className="flex items-center gap-1.5">
                                 <button
-                                  onClick={() => {
+                                  onClick={(e) => {
+                                    e.stopPropagation();
                                     updateVisit({ ...visit, status: 'Completed' });
                                     showToast("Ziyaret 'Tamamlandı' olarak güncellendi.");
                                   }}
@@ -1109,7 +1147,8 @@ export default function App() {
                                   Tamamla
                                 </button>
                                 <button
-                                  onClick={() => {
+                                  onClick={(e) => {
+                                    e.stopPropagation();
                                     setEditingVisit(visit);
                                     setShowVisitModal(true);
                                   }}
@@ -1147,7 +1186,11 @@ export default function App() {
                       .map(visit => (
                         <div
                           key={visit.id}
-                          className="p-3 rounded-xl border border-slate-100 dark:border-zinc-800/40 bg-slate-50/50 dark:bg-zinc-950/30 flex justify-between items-center"
+                          onClick={() => {
+                            setEditingVisit(visit);
+                            setShowVisitModal(true);
+                          }}
+                          className="p-3 rounded-xl border border-slate-100 dark:border-zinc-800/40 bg-slate-50/50 dark:bg-zinc-950/30 flex justify-between items-center transition-all hover:border-teal-500/80 dark:hover:border-teal-500/80 hover:bg-slate-100/50 dark:hover:bg-zinc-900/60 cursor-pointer group active:scale-[0.99]"
                         >
                           <div>
                             <div className="flex items-center gap-1.5">
@@ -1158,12 +1201,14 @@ export default function App() {
                                 {visit.time}
                               </span>
                             </div>
-                            <h4 className="text-xs font-bold text-slate-900 dark:text-zinc-100 mt-1">
-                              {visit.customerName}
+                            <h4 className="text-xs font-bold text-slate-900 dark:text-zinc-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors mt-1 flex items-center gap-1">
+                              <span>{visit.customerName}</span>
+                              <Edit2 className="w-3 h-3 opacity-0 group-hover:opacity-100 text-teal-600 transition-opacity" />
                             </h4>
                           </div>
                           <button
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.stopPropagation();
                               setEditingVisit(visit);
                               setShowVisitModal(true);
                             }}
